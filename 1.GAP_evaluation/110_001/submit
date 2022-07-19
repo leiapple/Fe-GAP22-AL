@@ -1,0 +1,90 @@
+#!/usr/bin/bash
+#SBATCH --job-name=gap_eval_c2
+#SBATCH --ntasks=32
+#SBATCH --partition=thin
+#SBATCH --cpus-per-task=1
+#SBATCH --time=6:00:00
+#SBATCH --error=slurm-%j.stderr
+#SBATCH --output=slurm-%j.stdout
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=lei.zhang@rug.nl
+
+module load 2021
+module restore set-gap
+
+# set email address
+eaddress="lei.zhang@rug.nl"
+# set criterion
+criterion=0.008
+##########################################################
+# GAP evaluation
+# Folder: ./1.GAP_evaluation/110_001
+# Code: BASH, PYTHON
+# This section is used to backup all the data, clear the folders
+# and initialize to restart the process. 
+##########################################################
+# Define the path to dump file
+dumppath="../../0.K_test/110_001/dump"
+
+# Initialise the process
+rm ./gap_error/*
+
+#=========================================================
+# Evaluate GAP error for all dump file
+kstart=111
+kend=160
+kstep=1
+
+for ((k=$kstart;k<=$kend;k=k+$kstep))
+do
+start_time=`date +%s`
+echo "Evaluating for K =" $k
+dumpfile="${dumppath}/file.crack.dump.${k}"
+python3 gap_evaluation.py ${dumpfile} ${k} ${criterion}
+end_time=`date +%s`
+runtime=$((end_time-start_time))
+echo "Running time of the program is:" $runtime
+done
+#=========================================================
+
+# Plot the error and send to email box
+python plot_error.py
+# Send email of the plots as the attached file.
+gaplabstr=`awk 'NR==1 {print $1}' ../../GAP_model/gap_Fe_test.xml`
+mail -s "GAP predicted error plot for crack system 2"  -a ./gap_error/GAP_predicted_error.png ${eaddress} <<EOF
+Please check the performance of GAP version: ${gaplabstr}.
+EOF
+##########################################################
+# Extract crack tip and convert to QE input file
+# Folder: ./qe_inp
+# Code: PYTHON
+##########################################################
+# Get the extropolated configuration: K value and frame number
+# first check if the file is existed.
+# If not, this means the desired precision is achieved.
+# Stop all simulation and inform the USER.
+mkdir qe_inp
+rm qe_inp/*
+#=========================================================
+if [ -f ./gap_error/extrapolated_frame ]; then
+lines=`wc -l < ./gap_error/extrapolated_frame`
+#---------------------------------------------------------
+for ((i=1;i<=${lines};i=i+1))
+do
+Kvalue=`awk 'NR=='${i}' {print $1}' ./gap_error/extrapolated_frame`
+frameNum=`awk 'NR=='${i}' {print $2}' ./gap_error/extrapolated_frame`
+# USAGE: 
+# python dump2qe.py ‘reference dump’ 'xyz file with GAP uncertainty' 'number of frame' 'outputfile name'
+python3 dump2qe.py ${dumppath}/file.crack.dump.ref ./gap_error/gap_erro_xyz.${Kvalue} ${frameNum} ./qe_inp/crack_${Kvalue}_${frameNum}.pw
+# choose the frame for DFT calculation and send it to its corresponding folder.
+if [ ${i}==1 ]; then
+cp ./qe_inp/crack_${Kvalue}_${frameNum}.pw ../../2.DFT_calculation/110_001/crack.pw
+fi
+done
+#---------------------------------------------------------
+else
+mail -s "Active learning for crack system 1 is finished"  "${eaddress}" <<EOF
+No extrapolation is found for crack sytem 1. The desired accuracy is achievevd.
+EOF
+fi
+#=========================================================

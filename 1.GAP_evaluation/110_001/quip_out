@@ -1,0 +1,95 @@
+libAtoms::Hello World: 2022-04-13 03:10:08
+libAtoms::Hello World: git version  https://github.com/libAtoms/QUIP.git,2555f1f6e-dirty
+libAtoms::Hello World: QUIP_ARCH    linux_x86_64_gfortran_openmp
+libAtoms::Hello World: compiled on  Mar 17 2022 at 20:49:43
+libAtoms::Hello World: OpenMP parallelisation with 32 threads
+WARNING: libAtoms::Hello World: environment variable OMP_STACKSIZE not set explicitly. The default value - system and compiler dependent - may be too small for some applications.
+libAtoms::Hello World: Random Seed = 11408991
+libAtoms::Hello World: global verbosity = 0
+
+Calls to system_timer will do nothing by default
+
+param_read_args got command_line ' output_file=a.out verbosity=ANALYSIS atoms_filename=EXT_xyz calc_args=local_gap_variance param_filename=../../GAP_model/gap_Fe_test.xml E=T'
+parser doing quip CLI arguments
+parser input line: < output_file=a.out verbosity=ANALYSIS atoms_filename=EXT_xyz calc_args=local_gap_variance param_filename=../../GAP_model/gap_Fe_test.xml E=T>
+param_read_line key='output_file' value='a.out'
+parser got: output_file=a.out
+param_read_line key='verbosity' value='ANALYSIS'
+parser got: verbosity=ANALYSIS
+param_read_line key='atoms_filename' value='EXT_xyz'
+parser got: atoms_filename=EXT_xyz
+param_read_line key='calc_args' value='local_gap_variance'
+parser got: calc_args=local_gap_variance
+param_read_line key='param_filename' value='../../GAP_model/gap_Fe_test.xml'
+parser got: param_filename=../../GAP_model/gap_Fe_test.xml
+param_read_line key='E' value='T'
+parser got: E=T
+parser defaulted: timing=F
+parser defaulted: energy=F
+parser defaulted: F=F
+parser defaulted: forces=F
+parser defaulted: V=F
+parser defaulted: virial=F
+parser defaulted: L=F
+parser defaulted: local=F
+parser defaulted: cij=F
+parser defaulted: c0ij=F
+parser defaulted: cij_dx=0.01
+parser defaulted: cij_relax_initial=F
+parser defaulted: torque=F
+parser defaulted: phonons=F
+parser defaulted: phonons_path_start={0.0 0.0 0.0}
+parser defaulted: phonons_path_end={0.0 0.0 0.0}
+parser defaulted: phonons_path_steps=3
+parser defaulted: frozen_phonons=F
+parser defaulted: phonons_zero_rotation=F
+parser defaulted: force_const_mat=F
+parser defaulted: phonopy_force_const_mat=F
+parser defaulted: parallel_phonons=F
+parser defaulted: dipole_moment=F
+parser defaulted: absorption=F
+parser defaulted: absorption_polarization={0.0 0.0  0.0 0.0  1.0 0.0}
+parser defaulted: absorption_freq_range={0.1 1.0 0.1}
+parser defaulted: absorption_gamma=0.01
+parser defaulted: phonons_dx=0.01
+parser defaulted: phonon_supercell={1 1 1}
+parser defaulted: phonon_supercell_fine={1 1 1}
+parser defaulted: test=F
+parser defaulted: n_test=F
+parser defaulted: test_dir_field=
+parser defaulted: relax=F
+parser defaulted: relax_print_filename=
+parser defaulted: relax_iter=1000
+parser defaulted: relax_tol=0.001
+parser defaulted: relax_eps=0.0001
+parser defaulted: relax_rattle=0.0
+parser defaulted: relax_print_interval=1
+parser defaulted: init_args=
+parser defaulted: bulk_scale_filename=
+parser defaulted: pre_relax_calc_args=
+parser defaulted: relax_hydrostatic_strain=F
+parser defaulted: relax_lattice_fix={0.0 0.0 0.0   0.0 0.0 0.0   0.0 0.0 0.0}
+parser defaulted: fire_minim_dt0=1.0
+parser defaulted: fire_minim_dt_max=20.0
+parser defaulted: cg_n_precond=F
+parser defaulted: precond_minim_method=preconLBFGS
+parser defaulted: precond_method=ID
+parser defaulted: precond_e_method=basic
+parser defaulted: precond_cutoff=-1.0
+parser defaulted: precond_len_scale=-1.0
+parser defaulted: precond_bulk_modulus=0.625
+parser defaulted: precond_number_density=0.1
+parser defaulted: precond_auto_mu=F
+parser defaulted: precond_e_scale=5.0
+parser defaulted: precond_res2=1e-5
+parser defaulted: precond_infoverride=0.5
+parser defaulted: precond_conv_method=2norm
+parser defaulted: dimer_at=
+parser defaulted: minim_method=cg
+parser defaulted: linmin_method=default
+parser defaulted: iso_pressure=0.0
+parser defaulted: diag_pressure={0.0 0.0 0.0}
+parser defaulted: pressure={0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0}
+parser defaulted: cutoff=-1.0
+parser defaulted: cutoff_skin=0.5
+parser defaulted: create_residue_labels=F

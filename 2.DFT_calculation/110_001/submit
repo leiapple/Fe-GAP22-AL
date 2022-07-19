@@ -1,0 +1,27 @@
+#!/bin/bash
+#SBATCH --job-name=dft_110
+#SBATCH --ntasks=1024
+#SBATCH --partition=thin
+#SBATCH --cpus-per-task=1
+#SBATCH --time=40:00:00
+#SBATCH --error=slurm-%j.stderr
+#SBATCH --output=slurm-%j.stdout
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=lei.zhang@rug.nl
+
+# Load the modules
+module load 2021
+module load QuantumESPRESSO/6.7-intel-2021a
+
+# the name of job folder
+
+QE_INPUT="crack.pw"
+QE_OUTPUT="crack.out"
+
+mpirun -np 1024 pw.x -nk 4 -nt 4 -nd 144 -in ${QE_INPUT} > ${QE_OUTPUT}
+
+# Extract the DFT data from QE output file
+# Usage: ./extract_dftdata.sh {outputfilename}
+./extract_dftdata.sh ${QE_OUTPUT}
+
+cat DFT_crack_110_001 >> ../../3.NEWGAP_training/train.xyz

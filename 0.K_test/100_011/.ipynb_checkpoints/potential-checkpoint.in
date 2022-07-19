@@ -1,0 +1,5 @@
+# pair_style      quip
+# pair_coeff      * * ../Current_GAP/gap_Fe_test.xml   "Potential xml_label=GAP_2022_3_10_60_18_34_37_91" 26 26
+
+pair_style      meam/c
+pair_coeff      * * ../Current_GAP/library.Fe.meam Fe ../Current_GAP/Fe.meam Fe Fe

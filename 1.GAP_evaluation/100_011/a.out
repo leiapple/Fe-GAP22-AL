@@ -1,0 +1,18 @@
+Using calc args: local_gap_variance
+Using pre-relax calc args:
+Using param_filename: ../../GAP_model/gap_Fe_test.xml
+Using init args:
+WARNING: Potential_initialise using default init_args "Potential xml_label=GAP_2022_4_12_120_23_4_14_731"
+Potential containing potential
+IP : 6
+IPModel_GAP : Gaussian Approximation Potential
+IPModel_GAP : label = GAP_2022_4_12_120_23_4_14_731
+IPModel_GAP : cutoff = 5.0000000000000000
+IPModel_GAP : E_scale = 1.0000000000000000
+IPModel_GAP : command_line =  at_file=train.xyz gap={ distance_Nb order=2 cutoff=5.0 n_sparse=25 covariance_type=ard_se delta=1.0 theta_uniform=2.5 sparse_method=uniform compact_clusters=True :soap_turbo l_max=8 alpha_max={{8}} atom_sigma_r={{0.25}} atom_sigma_t={{0.25}} atom_sigma_r_scaling={{ 0.0}} atom_sigma_t_scaling={{0.0}} zeta=4 rcut_hard=3.0 rcut_soft=2.5 delta=1.0 basis=poly3 scaling_mode=polynomial amplitude_scaling={{1.0}} n_species=1 species_Z={26} add_species=F compress_mode=trivial radial_enhancement=1 central_weight={{1.0}} covariance_type=dot_product config_type_n_sparse={slice_sample_high:250:phonons_54_high:250:phonons_128_high:250:prim_random:100:default:1500} sparse_method=cur_points :soap_turbo l_max=8 alpha_max={{8}} atom_sigma_r={{0.5}} atom_sigma_t={{0.5}} atom_sigma_r_scaling={{ 0.0}} atom_sigma_t_scaling={{0.0}} zeta=4 rcut_hard=5.0 rcut_soft=4.0 delta=1.0 basis=poly3 scaling_mode=polynomial amplitude_scaling={{1.0}} n_species=1 species_Z={26} add_species=F compress_mode=trivial radial_enhancement=1 central_weight={{1.0}} covariance_type=dot_product config_type_n_sparse={slice_sample_high:250:phonons_54_high:250:phonons_128_high:250:prim_random:100:default:1500} sparse_method=cur_points} sparse_jitter=1e-12 default_sigma={0.005 0.2 1.0 0.0} config_type_sigma={slice_sample_high:0.0001:0.01:0.01:0.0:phonons_54_high:0.001:0.05:1.0:0.0:phonons_128_high:0.001:0.05:1.0:0.0:prim_random:0.0001:0.01:0.01:0.0} energy_parameter_name=energy force_parameter_name=force virial_parameter_name=virial do_copy_at_file=F sparse_separate_file=T gp_file=gap_Fe_test.xml openmp_chunk_size=1000 e0={Fe:-3455.6995339}
+IPModel_GAP : log likelihood =  -0.11708330738835221E+007 -0.48263015650001307E+010 -0.48506087580757370E+010
+Energy=-86099545.470478177
+Cell Volume: 375185.99950737966 A^3
+
+libAtoms::Finalise: 2022-04-13 06:54:56
+libAtoms::Finalise: Bye-Bye!
